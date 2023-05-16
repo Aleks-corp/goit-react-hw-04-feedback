@@ -1,36 +1,22 @@
 import { Button } from './FeedbackOptions.styled';
-import { feedbackNames } from 'constants';
+import PropTypes from 'prop-types';
 
-export const FeedbackOptions = ({ onLeaveFeedback }) => {
-  return (
-    <>
-      <Button
-        type="button"
-        name={feedbackNames.good}
-        onClick={e => {
-          onLeaveFeedback(e.target.name);
-        }}
-      >
-        {feedbackNames.good}
-      </Button>
-      <Button
-        type="button"
-        name={feedbackNames.neutral}
-        onClick={e => {
-          onLeaveFeedback(e.target.name);
-        }}
-      >
-        {feedbackNames.neutral}
-      </Button>
-      <Button
-        type="button"
-        name={feedbackNames.bad}
-        onClick={e => {
-          onLeaveFeedback(e.target.name);
-        }}
-      >
-        {feedbackNames.bad}
-      </Button>
-    </>
-  );
+export const FeedbackOptions = ({ options, statisticUpdateMethod }) => {
+  return options.map(option => (
+    <Button
+      key={option}
+      type="button"
+      name={option}
+      onClick={e => {
+        statisticUpdateMethod(e.target.name);
+      }}
+    >
+      {option}
+    </Button>
+  ));
+};
+
+FeedbackOptions.propTypes = {
+  options: PropTypes.arrayOf(PropTypes.string).isRequired,
+  statisticUpdateMethod: PropTypes.func.isRequired,
 };
