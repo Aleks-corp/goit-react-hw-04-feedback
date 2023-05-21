@@ -13,13 +13,13 @@ export function App() {
   function statisticUpdateMethod(score) {
     switch (score) {
       case feedbackNames.good:
-        setGood(prevState => prevState + 1);
+        setGood(good + 1);
         return;
       case feedbackNames.neutral:
-        setNeutral(prevState => prevState + 1);
+        setNeutral(neutral + 1);
         return;
       case feedbackNames.bad:
-        setBad(prevState => prevState + 1);
+        setBad(bad + 1);
         return;
       default:
         return;
